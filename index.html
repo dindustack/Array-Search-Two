@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Getting used to Javascript Console!!!!</title>
+</head>
+<body>
+    <p><blockquote>Have you checked out my Javascript console</blockquote></p>
+</body>
+<script>
+const people = [
+    { name: 'Amaka', year: 1995, current: 2019},
+    { name: 'Amaka', year: 1995, current: 2019},
+    { name: 'Nnamdi', year: 1984, current: 2019 },
+    { name: 'Obinna', year: 1998, current: 2019},
+    { name: 'Dumebi', year: 2001, current: 2019},
+];
+
+
+const comments = [
+    {text: 'Making impact', id: 571575},
+    {text: 'Ice-cream anybody?', id: 679869},
+    {text: 'Duvet season', id: 218187},
+    {text: 'Nut flow', id: 518578},
+    {text: 'Pinky lift', id: 175648},
+];
+console.table(comments);
+
+const birthYear = people.sort(function(a, b) {
+    const lastPerson = a.current - a.year;
+    const nextPerson = b.current - b.year;
+    return lastPerson > nextPerson ? -1 : 1;
+});
+console.table(birthYear);
+
+const age = people.reduce((total, person) => {
+    return total + (person.current - person.year);
+}, 0);
+console.table(age)
+
+const wordLift = comments.map(comment => `${comment.text} your code is ${comment.id}`);
+console.table(wordLift);
+
+const isAdult = people.some(person => ((new Date()). getFullYear()) - person.year >= 19);
+console.table({isAdult});
+
+const allAdults = people.every(person => ((new Date()).getFullYear()) - person.year >= 19);
+console.table({allAdults});
+
+const comment = comments.find(comment => comment.id === 679869);
+console.table(comment);
+
+const index = comments.findIndex(comment => comment.id === 175648);
+console.log(index);
+
+const newComments = [
+    ...comments.slice(0, index),
+    ...comments.slice(index + 1)
+];
+
+</script>
+</html>
